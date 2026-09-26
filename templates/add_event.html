@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Event</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">🎓 CampusEvents</div>
+        <nav class="menu">
+            <a href="{% url 'dashboard' %}">🏠 Dashboard</a>
+            <a href="{% url 'events' %}">📅 Events</a>
+            <a class="active" href="{% url 'add_event' %}">➕ Add Event</a>
+            <a href="#">👥 Participants</a>
+            <a href="#">📊 Analytics</a>
+            <a href="#">🔔 Notifications</a>
+            <a href="#">⚙️ Settings</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <div class="form-card">
+            <h1>Create New Event</h1>
+            <p class="subtitle">Enter the details of your college event.</p>
+
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="form-actions">
+                    <a class="secondary-button" href="{% url 'events' %}">Cancel</a>
+                    <button class="primary-button" type="submit">Create Event</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+</html>

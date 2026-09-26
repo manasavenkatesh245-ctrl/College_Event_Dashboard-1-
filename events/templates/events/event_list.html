@@ -1,0 +1,92 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>College Event Dashboard</title>
+
+    <link rel="stylesheet"
+          href="{% static 'events/style.css' %}">
+</head>
+
+<body>
+
+<div class="header">
+    <h1>College Event Dashboard</h1>
+    <p>Discover and participate in college events</p>
+</div>
+
+<div class="container">
+
+    <div class="stats">
+
+        <div class="stat-card">
+            <h2>{{ events|length }}</h2>
+            <p>Total Events</p>
+        </div>
+
+        <div class="stat-card">
+            <h2>{{ events|length }}</h2>
+            <p>Upcoming Events</p>
+        </div>
+
+    </div>
+
+    <h2>Upcoming Events</h2>
+
+    <div class="events">
+
+        {% if events %}
+
+            {% for event in events %}
+<a href="{% url 'register_event' event.id %}">
+    Register for Event
+</a>
+
+            <div class="event-card">
+
+                <h2>{{ event.name }}</h2>
+
+                <p>{{ event.description }}</p>
+
+                <p class="event-info">
+                    <span class="label">Date:</span>
+                    {{ event.date }}
+                </p>
+
+                <p class="event-info">
+                    <span class="label">Time:</span>
+                    {{ event.time }}
+                </p>
+
+                <p class="event-info">
+                    <span class="label">Venue:</span>
+                    {{ event.venue }}
+                </p>
+
+                <p class="event-info">
+                    <span class="label">Organizer:</span>
+                    {{ event.organizer }}
+                </p>
+
+                <p class="event-info">
+                    <span class="label">Maximum Participants:</span>
+                    {{ event.max_participants }}
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>No events available.</p>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

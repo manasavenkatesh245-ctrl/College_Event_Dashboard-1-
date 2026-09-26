@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusEvents Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">🎓 CampusEvents</div>
+        <nav class="menu">
+            <a class="active" href="{% url 'dashboard' %}">🏠 Dashboard</a>
+            <a href="{% url 'events' %}">📅 Events</a>
+            <a href="{% url 'add_event' %}">➕ Add Event</a>
+            <a href="#">👥 Participants</a>
+            <a href="#">📊 Analytics</a>
+            <a href="#">🔔 Notifications</a>
+            <a href="#">⚙️ Settings</a>
+        </nav>
+        <div class="logout">🚪 Logout</div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>Dashboard</h1>
+                <p>Manage your college events in one place.</p>
+            </div>
+            <div class="profile">👤 Admin</div>
+        </header>
+
+        <section class="cards">
+            <div class="card"><div class="card-icon">📅</div><div><h3>Total Events</h3><h2>{{ total_events }}</h2></div></div>
+            <div class="card"><div class="card-icon">👥</div><div><h3>Students</h3><h2>450</h2></div></div>
+            <div class="card"><div class="card-icon">📝</div><div><h3>Registrations</h3><h2>320</h2></div></div>
+            <div class="card"><div class="card-icon">🎯</div><div><h3>Upcoming</h3><h2>{{ total_events }}</h2></div></div>
+        </section>
+
+        <section class="content-grid">
+            <div class="events-section">
+                <div class="section-header">
+                    <h2>Upcoming Events</h2>
+                    <a class="small-button" href="{% url 'events' %}">View All</a>
+                </div>
+
+                {% for event in events %}
+                <div class="event">
+                    <div class="event-date"><strong>{{ event.date|date:"d" }}</strong><span>{{ event.date|date:"M"|upper }}</span></div>
+                    <div class="event-info">
+                        <h3>{{ event.name }}</h3>
+                        <p>📍 {{ event.venue }}</p>
+                        <p>⏰ {{ event.time|time:"g:i A" }}</p>
+                    </div>
+                    <span class="status">Upcoming</span>
+                </div>
+                {% empty %}
+                <div class="empty">No events yet. <a href="{% url 'add_event' %}">Create your first event.</a></div>
+                {% endfor %}
+            </div>
+
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <a class="action-button" href="{% url 'add_event' %}">➕ Create Event</a>
+                <a class="action-button" href="{% url 'events' %}">📅 View Events</a>
+                <a class="action-button" href="#">👥 View Participants</a>
+                <a class="action-button" href="#">📊 View Analytics</a>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

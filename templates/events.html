@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Events</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="logo">🎓 CampusEvents</div>
+        <nav class="menu">
+            <a href="{% url 'dashboard' %}">🏠 Dashboard</a>
+            <a class="active" href="{% url 'events' %}">📅 Events</a>
+            <a href="{% url 'add_event' %}">➕ Add Event</a>
+            <a href="#">👥 Participants</a>
+            <a href="#">📊 Analytics</a>
+            <a href="#">🔔 Notifications</a>
+            <a href="#">⚙️ Settings</a>
+        </nav>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <h1>College Events</h1>
+                <p>View and manage all events.</p>
+            </div>
+            <a class="primary-button" href="{% url 'add_event' %}">➕ Add Event</a>
+        </header>
+
+        <div class="event-grid">
+            {% for event in events %}
+            <article class="event-card">
+                <span class="status">Upcoming</span>
+                <h2>{{ event.name }}</h2>
+                <p>{{ event.description }}</p>
+                <div class="details">
+                    <p>📅 {{ event.date|date:"d M Y" }}</p>
+                    <p>⏰ {{ event.time|time:"g:i A" }}</p>
+                    <p>📍 {{ event.venue }}</p>
+                    <p>👤 {{ event.organizer }}</p>
+                    <p>👥 Up to {{ event.max_participants }} participants</p>
+                </div>
+            </article>
+            {% empty %}
+            <div class="empty-card">
+                <h2>No events available</h2>
+                <p>Create your first college event.</p>
+                <a class="primary-button" href="{% url 'add_event' %}">Create Event</a>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+</body>
+</html>
