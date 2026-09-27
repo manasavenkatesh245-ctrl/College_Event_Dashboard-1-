@@ -1,0 +1,146 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Register for Event</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            background-color: #1f2937;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #2563eb;
+            margin-bottom: 10px;
+        }
+
+        .event-info {
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .error {
+            background-color: #fee2e2;
+            color: #b91c1c;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        form p {
+            margin-bottom: 18px;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2563eb;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #2563eb;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="navbar">
+        <h1>College Events</h1>
+    </div>
+
+    <div class="container">
+
+        <div class="card">
+
+            <h2>Register for {{ event.name }}</h2>
+
+            <div class="event-info">
+                <p><strong>Date:</strong> {{ event.date }}</p>
+                <p><strong>Time:</strong> {{ event.time }}</p>
+                <p><strong>Venue:</strong> {{ event.venue }}</p>
+                <p><strong>Organizer:</strong> {{ event.organizer }}</p>
+            </div>
+
+            {% if error %}
+                <div class="error">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+            <form method="POST">
+
+                {% csrf_token %}
+
+                {{ form.as_p }}
+
+                <button type="submit">
+                    Register Now
+                </button>
+
+            </form>
+
+            <a href="{% url 'events' %}" class="back-link">
+                ← Back to Events
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
+```

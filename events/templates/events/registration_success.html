@@ -1,20 +1,111 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Registration Successful</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background-color: #f4f6f9;
+        }
+
+        .navbar {
+            background-color: #1f2937;
+            color: white;
+            padding: 18px 40px;
+        }
+
+        .navbar h1 {
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 600px;
+            margin: 80px auto;
+        }
+
+        .success-card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-icon {
+            font-size: 60px;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #16a34a;
+            margin-bottom: 15px;
+        }
+
+        p {
+            color: #555;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+        }
+    </style>
 </head>
 
 <body>
 
-    <h1>Registration Successful!</h1>
+    <div class="navbar">
+        <h1>College Events</h1>
+    </div>
 
-    <p>
-        You have successfully registered for the event.
-    </p>
+    <div class="container">
 
-    <a href="/">
-        Back to Events
-    </a>
+        <div class="success-card">
+
+            <div class="success-icon">
+                🎉
+            </div>
+
+            <h2>Registration Successful!</h2>
+
+            <p>
+                You have successfully registered for the college event.
+            </p>
+
+            <p>
+                Thank you for participating!
+            </p>
+
+            <a href="{% url 'events' %}" class="btn">
+                View Events
+            </a>
+
+        </div>
+
+    </div>
 
 </body>
 </html>
+```

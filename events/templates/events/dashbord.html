@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +19,6 @@
 <body>
 
 ```
-<!-- Sidebar -->
 <aside class="sidebar">
 
     <div class="logo">
@@ -39,11 +39,11 @@
             ➕ Add Event
         </a>
 
-        <a href="#">
+        <a href="{% url 'participants' %}">
             👥 Participants
         </a>
 
-        <a href="#">
+        <a href="{% url 'analytics' %}">
             📊 Analytics
         </a>
 
@@ -64,18 +64,20 @@
 </aside>
 
 
-<!-- Main Content -->
 <main class="main">
 
-    <!-- Top Bar -->
     <header class="topbar">
 
         <div>
-            <h1>Dashboard</h1>
+
+            <h1>
+                Dashboard
+            </h1>
 
             <p>
                 Manage your college events in one place.
             </p>
+
         </div>
 
         <div class="profile">
@@ -85,7 +87,6 @@
     </header>
 
 
-    <!-- Statistics Cards -->
     <section class="cards">
 
         <div class="card">
@@ -95,8 +96,15 @@
             </div>
 
             <div>
-                <h3>Total Events</h3>
-                <h2>{{ total_events }}</h2>
+
+                <h3>
+                    Total Events
+                </h3>
+
+                <h2>
+                    {{ total_events }}
+                </h2>
+
             </div>
 
         </div>
@@ -109,8 +117,15 @@
             </div>
 
             <div>
-                <h3>Students</h3>
-                <h2>450</h2>
+
+                <h3>
+                    Students
+                </h3>
+
+                <h2>
+                    450
+                </h2>
+
             </div>
 
         </div>
@@ -123,8 +138,15 @@
             </div>
 
             <div>
-                <h3>Registrations</h3>
-                <h2>{{ total_registrations }}</h2>
+
+                <h3>
+                    Registrations
+                </h3>
+
+                <h2>
+                    {{ total_registrations }}
+                </h2>
+
             </div>
 
         </div>
@@ -137,8 +159,15 @@
             </div>
 
             <div>
-                <h3>Upcoming</h3>
-                <h2>{{ upcoming_events }}</h2>
+
+                <h3>
+                    Upcoming
+                </h3>
+
+                <h2>
+                    {{ upcoming_events }}
+                </h2>
+
             </div>
 
         </div>
@@ -146,11 +175,9 @@
     </section>
 
 
-    <!-- Content Grid -->
     <section class="content-grid">
 
 
-        <!-- Upcoming Events -->
         <div class="events-section">
 
             <div class="section-header">
@@ -173,7 +200,7 @@
 
             <div class="event">
 
-                <!-- Event Date -->
+
                 <div class="event-date">
 
                     <strong>
@@ -187,7 +214,6 @@
                 </div>
 
 
-                <!-- Event Information -->
                 <div class="event-info">
 
                     <h3>
@@ -203,7 +229,6 @@
                     </p>
 
 
-                    <!-- View Details -->
                     <a
                         href="{% url 'event_detail' event.id %}"
                         class="details-button"
@@ -214,7 +239,6 @@
                 </div>
 
 
-                <!-- Status -->
                 <span class="status">
                     Upcoming
                 </span>
@@ -239,7 +263,6 @@
         </div>
 
 
-        <!-- Quick Actions -->
         <div class="quick-actions">
 
             <h2>
@@ -263,13 +286,22 @@
             </a>
 
 
-            <a
-                class="action-button"
-                href="#"
-            >
-                👥 View Participants
+            <a href="{% url 'participants' %}">
+                  👥 Participants
             </a>
+            <a href="{% url 'analytics' %}">
+               📊 Analytics
+            </a>        
+            <a href="{% url 'notifications' %}">
+              🔔 Notifications
+             
+            </a>     </div>
 
+    </section>
 
-            <a
+</main>
 ```
+
+</body>
+
+</html>

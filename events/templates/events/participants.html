@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Participants</title>
+
+<style>
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+    }
+
+    .navbar {
+        background: #1f2937;
+        color: white;
+        padding: 18px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar h1 {
+        margin: 0;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .container {
+        width: 90%;
+        margin: 40px auto;
+    }
+
+    .container h2 {
+        color: #1f2937;
+    }
+
+    .table-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th,
+    td {
+        padding: 14px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background: #2563eb;
+        color: white;
+    }
+
+    tr:hover {
+        background: #f1f5f9;
+    }
+
+    .empty {
+        text-align: center;
+        padding: 30px;
+        color: #666;
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="navbar">
+
+    <h1>College Events</h1>
+
+    <a href="{% url 'dashboard' %}">
+        Dashboard
+    </a>
+
+</div>
+
+
+<div class="container">
+
+    <h2>👥 Participants</h2>
+
+
+    <div class="table-container">
+
+        {% if registrations %}
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Student Name</th>
+
+                    <th>Email</th>
+
+                    <th>Phone</th>
+
+                    <th>Event</th>
+
+                    <th>Registered At</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for registration in registrations %}
+
+                <tr>
+
+                    <td>
+                        {{ registration.student_name }}
+                    </td>
+
+                    <td>
+                        {{ registration.student_email }}
+                    </td>
+
+                    <td>
+                        {{ registration.student_phone }}
+                    </td>
+
+                    <td>
+                        {{ registration.event.name }}
+                    </td>
+
+                    <td>
+                        {{ registration.registered_at }}
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+        {% else %}
+
+        <div class="empty">
+
+            No participants registered yet.
+
+        </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+```
+
+</body>
+
+</html>

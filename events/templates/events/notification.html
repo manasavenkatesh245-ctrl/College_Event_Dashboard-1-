@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+```
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notifications</title>
+
+<style>
+
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f6f9;
+        color: #333;
+    }
+
+    .navbar {
+        background: #1f2937;
+        color: white;
+        padding: 18px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar h1 {
+        margin: 0;
+    }
+
+    .navbar a {
+        color: white;
+        text-decoration: none;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 1000px;
+        margin: 40px auto;
+    }
+
+    .notification {
+        background: white;
+        padding: 20px;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .icon {
+        font-size: 30px;
+    }
+
+    .notification h3 {
+        margin: 0 0 8px 0;
+    }
+
+    .notification p {
+        margin: 0;
+        color: #666;
+    }
+
+    .empty {
+        background: white;
+        padding: 30px;
+        text-align: center;
+        border-radius: 10px;
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="navbar">
+
+    <h1>🔔 Notifications</h1>
+
+    <a href="{% url 'dashboard' %}">
+        Dashboard
+    </a>
+
+</div>
+
+
+<div class="container">
+
+    <h2>Recent Notifications</h2>
+
+
+    {% for notification in notifications %}
+
+    <div class="notification">
+
+        <div class="icon">
+            {{ notification.icon }}
+        </div>
+
+        <div>
+
+            <h3>
+                {{ notification.title }}
+            </h3>
+
+            <p>
+                {{ notification.message }}
+            </p>
+
+        </div>
+
+    </div>
+
+    {% empty %}
+
+    <div class="empty">
+
+        <h3>No Notifications</h3>
+
+        <p>
+            You don't have any new notifications.
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+```
+
+</body>
+
+</html>
